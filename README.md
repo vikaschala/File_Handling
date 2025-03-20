@@ -1,96 +1,10 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Upload</title>
-    <style>
-        /* General Styles */
-        body {
-            background-color: #f8f9fa;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 1rem;
-        }
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            background-color: white;
-        }
-        .card-body {
-            padding: 2rem;
-        }
-        h1 {
-            color: #333;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-        .form-label {
-            font-weight: bold;
-            color: #555;
-        }
-        .form-control {
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            width: 100%;
-        }
-        .btn-primary {
-            background-color: #007bff;
-            border: none;
-            padding: 0.75rem;
-            font-size: 1rem;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            color: white;
-            cursor: pointer;
-        }
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-        .row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .col-md-6 {
-            flex: 1;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>📂 File Processing and Conversion</h1>
-        <div class="card">
-            <div class="card-body">
-                <form action="/upload" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="file" class="form-label">Upload File</label>
-                        <input type="file" class="form-control" id="file" name="file" required>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="startRow" class="form-label">Start Row</label>
-                            <input type="number" class="form-control" id="startRow" name="startRow" value="1" min="1">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="startCol" class="form-label">Start Column (Excel Only)</label>
-                            <input type="number" class="form-control" id="startCol" name="startCol" value="1" min="1">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Process File</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+<h1 align="center" style="font-size: 36px;">📂 File Processing and Conversion Application</h1><p align="center" style="font-size: 20px;"> A <strong>Spring Boot-based web application</strong> to handle file uploads, process file contents, and convert them into different formats. Supports processing <strong>CSV</strong> and <strong>Excel</strong> files, as well as converting <strong>XML</strong> files to <strong>JSON</strong>. </p> <p align="center"> <img src="https://img.shields.io/badge/Java-17-blue" alt="Java 17"> <img src="https://img.shields.io/badge/Spring%20Boot-3.1.5-brightgreen" alt="Spring Boot"> <img src="https://img.shields.io/badge/Thymeleaf-3.1.2-orange" alt="Thymeleaf"> </p>
+<h2 style="font-size: 28px;">✨ Features</h2><ul style="font-size: 18px;"> <li><strong>File Upload and Processing</strong>: <ul> <li>Upload CSV and Excel files through a web interface.</li> <li>Extract data starting from a specified row.</li> <li>Display processed data in an HTML table format.</li> </ul> </li> <li><strong>Excel File Processing</strong>: <ul> <li>Process Excel files (<code>.xlsx</code> and <code>.xls</code>).</li> <li>Extract data from specific rows and columns.</li> <li>Specify a starting row and column for data extraction.</li> </ul> </li> <li><strong>CSV File Processing</strong>: <ul> <li>Read CSV files and extract data starting from a specified row.</li> <li>Treat the first row as headers and subsequent rows as data.</li> </ul> </li> <li><strong>XML to JSON Conversion</strong>: <ul> <li>Upload XML files and convert them into JSON format.</li> <li>Save converted JSON files to the <code>uploads/json/</code> directory.</li> <li>Provide the path of the saved JSON file as feedback.</li> </ul> </li> <li><strong>User Interface</strong>: <ul> <li>Simple web interface for file uploads.</li> <li>Specify starting row and column (for Excel files).</li> <li>Display processed data or conversion results on the web page.</li> </ul> </li> </ul>
+<h2 style="font-size: 28px;">📋 Prerequisites</h2><ul style="font-size: 18px;"> <li><strong>Java 17+</strong> (Spring Boot or similar Java-based frameworks).</li> <li><strong>Maven</strong> (for dependency management and building the project).</li> <li><strong>Apache POI</strong> (for Excel file processing).</li> <li><strong>OpenCSV</strong> (for CSV file processing).</li> <li><strong>Jackson</strong> (for XML to JSON conversion).</li> <li><strong>Thymeleaf</strong> (for rendering HTML templates).</li> </ul>
+<h2 style="font-size: 28px;">🛠️ Setup</h2><h3 style="font-size: 24px;">1. Clone the Repository</h3><pre style="font-size: 18px;"> <code>git clone https://github.com/your_username/file-processing-app.git cd file-processing-app</code> </pre><h3 style="font-size: 24px;">2. Install Dependencies</h3><p style="font-size: 18px;"> Use <strong>Maven</strong> to install dependencies: </p><pre style="font-size: 18px;"> <code>mvn clean install</code> </pre><h3 style="font-size: 24px;">3. Run the Application</h3><p style="font-size: 18px;"> Use <strong>Maven</strong> to run the application: </p><pre style="font-size: 18px;"> <code>mvn spring-boot:run</code> </pre><h3 style="font-size: 24px;">4. Access the Application</h3><p style="font-size: 18px;"> Once the application is running, you can access it at: </p><pre style="font-size: 18px;"> <code>http://localhost:8080</code> </pre>
+<h2 style="font-size: 28px;">🌐 Application Workflow</h2><h3 style="font-size: 24px;">1. File Upload</h3><p style="font-size: 18px;"> - Navigate to the home page (<code>http://localhost:8080</code>). - Upload a CSV, Excel, or XML file. - Specify the starting row and column (for Excel files). </p><h3 style="font-size: 24px;">2. Processed Data Display</h3><p style="font-size: 18px;"> - After processing, the data is displayed in an HTML table. - For Excel and CSV files, the table includes headers and rows. </p><h3 style="font-size: 24px;">3. XML to JSON Conversion</h3><p style="font-size: 18px;"> - Upload an XML file to convert it to JSON. - The JSON file is saved in the <code>uploads/json/</code> directory. - The path of the saved JSON file is displayed on the web page. </p>
+<h2 style="font-size: 28px;">🧪 Testing</h2><p style="font-size: 18px;"> You can test the application by uploading sample files: </p><ul style="font-size: 18px;"> <li><strong>CSV</strong>: Upload a CSV file with headers and rows.</li> <li><strong>Excel</strong>: Upload an Excel file with data in rows and columns.</li> <li><strong>XML</strong>: Upload an XML file to convert it to JSON.</li> </ul>
+<h2 style="font-size: 28px;">📂 Project Structure</h2><pre style="font-size: 18px;"> <code>src/ ├── main/ │ ├── java/ │ │ ├── controller/ # Handles HTTP requests for file uploads and processing │ │ ├── service/ # Core logic for processing CSV, Excel, and XML files │ │ └── Application.java # Spring Boot application entry point │ ├── resources/ │ │ ├── static/ # Static assets (CSS, JS, images) │ │ ├── templates/ # Thymeleaf templates │ │ └── application.properties │ └── uploads/ # Directory for uploaded and processed files └── test/ # Unit and integration tests </code> </pre>
+<h2 style="font-size: 28px;">🚨 Error Handling</h2><ul style="font-size: 18px;"> <li>Handles exceptions such as invalid file formats, missing files, and processing errors.</li> <li>Displays error messages to the user in the web interface.</li> </ul>
+<h2 style="font-size: 28px;">📜 License</h2><p style="font-size: 18px;"> This project is licensed under the MIT License. See the <a href="LICENSE">LICENSE</a> file for details. </p>
+<h2 style="font-size: 28px;">🙏 Acknowledgments</h2><ul style="font-size: 18px;"> <li><strong>Spring Boot</strong> for the backend framework.</li> <li><strong>Apache POI</strong> for Excel file processing.</li> <li><strong>OpenCSV</strong> for CSV file processing.</li> <li><strong>Jackson</strong> for XML to JSON conversion.</li> <li><strong>Thymeleaf</strong> for rendering HTML templates.</li> </ul>
