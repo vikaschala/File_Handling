@@ -1,109 +1,100 @@
-🚀 File Processing and Conversion Application
+📂 File Processing and Conversion Application
 A Spring Boot-based web application designed to handle file uploads, process file contents, and convert them into different formats. The application supports processing CSV and Excel files, as well as converting XML files to JSON. Processed data is displayed in an HTML table format, and converted JSON files are saved to a specified directory.
 
 ✨ Key Features
 File Upload and Processing
-Users can upload CSV and Excel files through a web interface.
+Upload CSV and Excel files through a web interface.
 
-The application processes the uploaded files and extracts data starting from a specified row.
+Extract data starting from a specified row.
 
-The processed data is displayed in an HTML table format on the web page.
+Display processed data in an HTML table format.
 
 Excel File Processing
-The application can process Excel files (.xlsx and .xls) and extract data from specific rows and columns.
+Process Excel files (.xlsx and .xls).
 
-Users can specify the starting row for data extraction.
+Extract data from specific rows and columns.
 
-If a specific column is provided, the application extracts the value from the specified cell.
+Specify a starting row and column for data extraction.
 
 CSV File Processing
-The application reads CSV files and extracts data starting from a specified row.
+Read CSV files and extract data starting from a specified row.
 
-The first row of the CSV file is treated as headers, and the subsequent rows are treated as data.
+Treat the first row as headers and subsequent rows as data.
 
 XML to JSON Conversion
-Users can upload XML files, and the application converts them into JSON format.
+Upload XML files and convert them into JSON format.
 
-The converted JSON file is saved in a predefined directory (uploads/json/).
+Save converted JSON files to the uploads/json/ directory.
 
-The application provides the path of the saved JSON file as feedback to the user.
+Provide the path of the saved JSON file as feedback.
 
 User Interface
-The application provides a simple web interface for file uploads.
+Simple web interface for file uploads.
 
-Users can select a file, specify the starting row, and (for Excel files) specify a column number.
+Specify starting row and column (for Excel files).
 
-The processed data or conversion result is displayed on the web page.
+Display processed data or conversion results on the web page.
 
-🛠️ Technical Details
-Technologies Used
-Spring Boot: Framework for backend development.
+🛠️ Technologies Used
+Spring Boot: Backend framework.
 
-Thymeleaf: Used for rendering HTML templates and displaying processed data.
+Thymeleaf: HTML template rendering.
 
-Apache POI: Library for reading and processing Excel files.
+Apache POI: Excel file processing.
 
-OpenCSV: Library for reading and processing CSV files.
+OpenCSV: CSV file processing.
 
-Jackson: Library for XML to JSON conversion.
+Jackson: XML to JSON conversion.
 
-HTML/CSS: Used for displaying the processed data in a table format.
+HTML/CSS: Displaying processed data in tables.
 
 🏗️ Project Structure
 Controller (FIleUploadontroller)
 Handles HTTP requests for file uploads and processing.
 
-Routes requests to the appropriate service methods based on the file type.
+Routes requests to the appropriate service methods based on file type.
 
-Passes the processed data to the view (Thymeleaf template) for rendering.
+Passes processed data to the view (Thymeleaf template) for rendering.
 
 Service (FileProcessingService)
-Contains the core logic for processing CSV, Excel, and XML files.
+Core logic for processing CSV, Excel, and XML files.
 
 Converts XML files to JSON and saves them to the specified directory.
 
-Formats the processed data into HTML tables for display.
+Formats processed data into HTML tables for display.
 
 View (Thymeleaf Templates)
-upload.html: The file upload form where users can select files and specify parameters.
+upload.html: File upload form.
 
-uploadResult.html: Displays the processed data in an HTML table.
+uploadResult.html: Displays processed data in an HTML table.
 
-xmlConversion.html: Displays the result of XML to JSON conversion.
+xmlConversion.html: Displays XML to JSON conversion results.
 
 🔧 File Processing Logic
 CSV Processing
-The processCsv method reads the CSV file using OpenCSV.
+The processCsv method reads CSV files using OpenCSV.
 
-It extracts headers from the first row and data from the specified starting row.
+Extracts headers from the first row and data from the specified starting row.
 
-The data is formatted into an HTML table using the formatTableOutput method.
+Formats data into an HTML table using the formatTableOutput method.
 
 Excel Processing
-The processExcel method reads the Excel file using Apache POI.
+The processExcel method reads Excel files using Apache POI.
 
-It extracts headers from the first row and data from the specified starting row.
+Extracts headers from the first row and data from the specified starting row.
 
-If a specific cell is requested, the processExcel method with row and column parameters is used to extract the cell value.
+If a specific cell is requested, extracts the value from the specified cell.
 
-The data is formatted into an HTML table using the formatTableOutput method.
+Formats data into an HTML table using the formatTableOutput method.
 
 XML to JSON Conversion
-The convertXmlToJson method reads the XML file using Jackson.
+The convertXmlToJson method reads XML files using Jackson.
 
-It converts the XML content into a JSON string and saves it to the uploads/json/ directory.
+Converts XML content into a JSON string and saves it to the uploads/json/ directory.
 
-The path of the saved JSON file is returned to the user.
+Returns the path of the saved JSON file to the user.
 
 🚨 Error Handling
-The application handles exceptions such as invalid file formats, missing files, and processing errors.
+Handles exceptions such as invalid file formats, missing files, and processing errors.
 
-Error messages are displayed to the user in the web interface.
-
-🖥️ How It Works
-Uploading a File
-The user navigates to the upload page (/files/upload).
-
-The user selects a file (CSV, Excel, or XML) and specifies the starting row (and column for Excel files).
-
-The file is uploaded to the server.
+Displays error messages to the user in the web interface.
