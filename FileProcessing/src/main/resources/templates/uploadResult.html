@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Upload Result</title>
+    <link rel="stylesheet" type="text/css" href="/css/uploadResult.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload Result</h2>
+        <p th:if="${message}" th:text="${message}"></p>
+        <div th:if="${tableData}" th:utext="${tableData}"></div>
+    </div>
+</body>
+</html>

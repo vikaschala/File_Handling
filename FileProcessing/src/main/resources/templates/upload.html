@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+    <link rel="stylesheet" type="text/css" href="/css/upload.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload File</h2>
+        <form action="/files/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="fileInput" accept=".csv, .xlsx, .xls" required>
+            <label>Starting Row:</label>
+            <input type="number" name="startRow" value="0" required>
+            <label>Starting col:</label>
+            <input type="number" name="col" value="0" required>
+            <button type="submit">Upload & Process</button>
+        </form>
+        <form action="/files/upload/xml" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept=".xml" required>
+            <button type="submit">Convert XML to JSON</button>
+        </form>
+    </div>
+</body>
+</html>
