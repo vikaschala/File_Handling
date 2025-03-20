@@ -1,100 +1,96 @@
-                                                                   **📂 File Processing and Conversion Application**
-A Spring Boot-based web application designed to handle file uploads, process file contents, and convert them into different formats. The application supports processing CSV and Excel files, as well as converting XML files to JSON. Processed data is displayed in an HTML table format, and converted JSON files are saved to a specified directory.
-
-✨ Key Features
-File Upload and Processing
-Upload CSV and Excel files through a web interface.
-
-Extract data starting from a specified row.
-
-Display processed data in an HTML table format.
-
-Excel File Processing
-Process Excel files (.xlsx and .xls).
-
-Extract data from specific rows and columns.
-
-Specify a starting row and column for data extraction.
-
-CSV File Processing
-Read CSV files and extract data starting from a specified row.
-
-Treat the first row as headers and subsequent rows as data.
-
-XML to JSON Conversion
-Upload XML files and convert them into JSON format.
-
-Save converted JSON files to the uploads/json/ directory.
-
-Provide the path of the saved JSON file as feedback.
-
-User Interface
-Simple web interface for file uploads.
-
-Specify starting row and column (for Excel files).
-
-Display processed data or conversion results on the web page.
-
-🛠️ Technologies Used
-Spring Boot: Backend framework.
-
-Thymeleaf: HTML template rendering.
-
-Apache POI: Excel file processing.
-
-OpenCSV: CSV file processing.
-
-Jackson: XML to JSON conversion.
-
-HTML/CSS: Displaying processed data in tables.
-
-🏗️ Project Structure
-Controller (FIleUploadontroller)
-Handles HTTP requests for file uploads and processing.
-
-Routes requests to the appropriate service methods based on file type.
-
-Passes processed data to the view (Thymeleaf template) for rendering.
-
-Service (FileProcessingService)
-Core logic for processing CSV, Excel, and XML files.
-
-Converts XML files to JSON and saves them to the specified directory.
-
-Formats processed data into HTML tables for display.
-
-View (Thymeleaf Templates)
-upload.html: File upload form.
-
-uploadResult.html: Displays processed data in an HTML table.
-
-xmlConversion.html: Displays XML to JSON conversion results.
-
-🔧 File Processing Logic
-CSV Processing
-The processCsv method reads CSV files using OpenCSV.
-
-Extracts headers from the first row and data from the specified starting row.
-
-Formats data into an HTML table using the formatTableOutput method.
-
-Excel Processing
-The processExcel method reads Excel files using Apache POI.
-
-Extracts headers from the first row and data from the specified starting row.
-
-If a specific cell is requested, extracts the value from the specified cell.
-
-Formats data into an HTML table using the formatTableOutput method.
-
-XML to JSON Conversion
-The convertXmlToJson method reads XML files using Jackson.
-
-Converts XML content into a JSON string and saves it to the uploads/json/ directory.
-
-Returns the path of the saved JSON file to the user.
-
-🚨 Error Handling
-Handles exceptions such as invalid file formats, missing files, and processing errors.
-
-Displays error messages to the user in the web interface.
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <style>
+        /* General Styles */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: white;
+        }
+        .card-body {
+            padding: 2rem;
+        }
+        h1 {
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            font-weight: bold;
+            color: #555;
+        }
+        .form-control {
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            color: white;
+            cursor: pointer;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .row {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .col-md-6 {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📂 File Processing and Conversion</h1>
+        <div class="card">
+            <div class="card-body">
+                <form action="/upload" method="post" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Upload File</label>
+                        <input type="file" class="form-control" id="file" name="file" required>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="startRow" class="form-label">Start Row</label>
+                            <input type="number" class="form-control" id="startRow" name="startRow" value="1" min="1">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="startCol" class="form-label">Start Column (Excel Only)</label>
+                            <input type="number" class="form-control" id="startCol" name="startCol" value="1" min="1">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-3">Process File</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
